@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conquest — Ticket System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <aside>
+            <div>
+                <a href="#" class="logo" onclick="app.navigate('dashboard')">Conquest.</a>
+                <nav>
+                    <ul>
+                        <li><a href="#" id="nav-dashboard" class="active"
+                                onclick="app.navigate('dashboard')">Dashboard</a></li>
+                        <li><a href="#" id="nav-tickets" onclick="app.navigate('tickets')">Tickets</a></li>
+                        <li><a href="#" id="nav-users" onclick="app.navigate('users')">Users</a></li>
+                        <li><a href="#" id="nav-settings" onclick="app.navigate('settings')">Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <div class="sidebar-divider"></div>
+                <p class="sidebar-meta">Logged in as</p>
+                <p class="sidebar-user">Admin User</p>
+            </div>
+        </aside>
+
+        <main id="main-content">
+            <!-- Content injected by app.js -->
+        </main>
+    </div>
+
+    <!-- Create Ticket Modal -->
+    <div id="modal-overlay" class="hidden">
+        <div class="modal-body card">
+            <div class="flex-between" style="margin-bottom: var(--space-md);">
+                <h3>New Ticket</h3>
+                <button class="btn btn-secondary" onclick="app.closeModal()" style="padding:4px 10px;">✕</button>
+            </div>
+            <form id="create-ticket-form" onsubmit="app.submitTicket(event)">
+                <label for="ticket-issue">Issue</label>
+                <input type="text" id="ticket-issue" required placeholder="Briefly describe the problem">
+
+                <label for="ticket-raisedby">Raised By (User ID)</label>
+                <input type="number" id="ticket-raisedby" value="1" required min="1">
+
+                <div style="text-align:right; margin-top: var(--space-md);">
+                    <button type="button" class="btn btn-secondary" onclick="app.closeModal()"
+                        style="margin-right:8px;">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
